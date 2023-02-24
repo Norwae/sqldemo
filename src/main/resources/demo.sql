@@ -36,3 +36,9 @@ from person p
          join authorship a on p.id = a.author
          join inventory i on a.book = i.book
 group by p.id;
+
+select id, first_names, last_names, case
+           when vip then interval '10 weeks'
+           when customer_since < DATE '2019-01-01' then interval '1 month'
+           else '20 days' end
+from customer join person on person = id;

@@ -58,15 +58,15 @@ values ('d74ce294-a953-11ed-afa1-0242ac120002', 'Ansgar', 'Author', DATE '1972-1
        ('d74ce294-a953-11ed-afa1-0242ac12000b', 'Naomi', 'Cantante', DATE '1984-8-13');
 
 insert into customer(person, customer_since, vip)
-values ('d74ce294-a953-11ed-afa1-0242ac120002', DATE '1972-12-23', true),
-       ('d74ce294-a953-11ed-afa1-0242ac120003', DATE '1912-7-2', false),
+values ('d74ce294-a953-11ed-afa1-0242ac120002', DATE '2002-2-23', true),
+       ('d74ce294-a953-11ed-afa1-0242ac120003', DATE '2012-7-2', false),
        ('d74ce294-a953-11ed-afa1-0242ac120004', DATE '1999-5-9', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120005', DATE '2000-10-10', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120006', DATE '1999-11-17', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120007', DATE '1972-12-23', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120008', DATE '1989-9-19', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120009', DATE '1989-5-13', false),
-       ('d74ce294-a953-11ed-afa1-0242ac12000b', DATE '1984-8-13', false);
+       ('d74ce294-a953-11ed-afa1-0242ac120005', DATE '2013-1-16', false),
+       ('d74ce294-a953-11ed-afa1-0242ac120006', DATE '2017-5-5', false),
+       ('d74ce294-a953-11ed-afa1-0242ac120007', DATE '2022-4-10', false),
+       ('d74ce294-a953-11ed-afa1-0242ac120008', DATE '2003-10-11', false),
+       ('d74ce294-a953-11ed-afa1-0242ac120009', DATE '2015-12-19', false),
+       ('d74ce294-a953-11ed-afa1-0242ac12000b', DATE '2007-10-23', false);
 
 insert into book (isbn, title)
 values ('1234567890123', 'Spass mit Kraftsport'),
