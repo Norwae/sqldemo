@@ -63,10 +63,10 @@ values ('d74ce294-a953-11ed-afa1-0242ac120002', DATE '2002-2-23', true),
        ('d74ce294-a953-11ed-afa1-0242ac120004', DATE '1999-5-9', false),
        ('d74ce294-a953-11ed-afa1-0242ac120005', DATE '2013-1-16', false),
        ('d74ce294-a953-11ed-afa1-0242ac120006', DATE '2017-5-5', false),
-       ('d74ce294-a953-11ed-afa1-0242ac120007', DATE '2022-4-10', false),
+       ('d74ce294-a953-11ed-afa1-0242ac120007', DATE '2020-4-10', false),
        ('d74ce294-a953-11ed-afa1-0242ac120008', DATE '2003-10-11', false),
        ('d74ce294-a953-11ed-afa1-0242ac120009', DATE '2015-12-19', false),
-       ('d74ce294-a953-11ed-afa1-0242ac12000b', DATE '2007-10-23', false);
+       ('d74ce294-a953-11ed-afa1-0242ac12000b', now(), false);
 
 insert into book (isbn, title)
 values ('1234567890123', 'Spass mit Kraftsport'),
@@ -124,3 +124,13 @@ values ('d74ce294-a953-11ed-afa1-0242ac12000c', '1234567890123', DATE '2023-02-1
        ('d74ce294-a953-11ed-afa1-0242ac12002e', '3292398328211', DATE '2023-02-10'),
        ('d74ce294-a953-11ed-afa1-0242ac12002f', '3292398328211', DATE '2023-02-10')
 ;
+
+insert into lending
+    values
+        ('d74ce294-a953-11ed-afa1-0242ac120010', 'd74ce294-a953-11ed-afa1-0242ac120007', now() - INTERVAL '10 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12002c', 'd74ce294-a953-11ed-afa1-0242ac120007', now() - INTERVAL '14 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12000c', 'd74ce294-a953-11ed-afa1-0242ac120007', now() - INTERVAL '20 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12002a', 'd74ce294-a953-11ed-afa1-0242ac120009', now() - INTERVAL '11 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12002b', 'd74ce294-a953-11ed-afa1-0242ac12000b', now() - INTERVAL '1 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12001a', 'd74ce294-a953-11ed-afa1-0242ac120002', now() - INTERVAL '10 days'),
+        ('d74ce294-a953-11ed-afa1-0242ac12001b', 'd74ce294-a953-11ed-afa1-0242ac120003', now() - INTERVAL '60 days');
