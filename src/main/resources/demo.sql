@@ -64,10 +64,12 @@ from (values ('Albert Schweitzer', DATE '1875-01-14'),
 -- Verleihung: Bestandsnummer, kundennummer und ausleihdatum
 
 
-select first_names, last_names from person;
+select first_names, last_names
+from person;
 
 -- wie viele bücher haben wir im bestand?
-select count(*) from inventory;
+select count(*)
+from inventory;
 
 
 -- Wie viele exemplare haben wir pro ISBN?
@@ -84,32 +86,41 @@ where inventory.book = book.isbn
 group by isbn;
 
 -- Welche Autoren haben wir wie oft im Bestand?
-select trim(coalesce(p.first_names, '') || ' ' || coalesce(p.last_names, '')), count(*)
-from person p
-         join authorship a on p.id = a.author
-         join inventory i on a.book = i.book
+select p.first_names, p.last_names, count(*)
+from authorship a
+     join inventory i on a.book = i.book
+     join book b on a.book = b.isbn
+     join person p on p.id = a.author
 group by p.id;
 
 -- Ausleihfristen müßen nicht explizit gespeichert werden, wir können solche Regeln auch in
 -- die Abfrage codieren.
 
-select id, first_names, last_names, case
+select id,
+       first_names,
+       last_names,
+       case
            when vip then interval '10 weeks'
            when customer_since < DATE '2019-01-01' then interval '1 month'
            else '20 days' end
-from customer join person on person = id;
+from customer
+         join person on person = id;
 
 -- Antworten sind "ad hoc" tabellen! Sie können in andere Anfragen geschachtelt werden. (Siehe auch oben!)
 
 -- Vorteil ist, dass wenn sich Regeln ändern, man nicht (massendaten) anpassen muss, sondern die
 -- frage danach anders stellen kann
 
-select id, first_names, last_names, case
-                                        when vip then interval '10 weeks'
-                                        when customer_since < DATE '2019-01-01' then interval '1 month'
-                                        when customer_since < now() - INTERVAL '2 years' then '4 weeks'
-                                        else '20 days' end
-from customer join person on person = id;
+select id,
+       first_names,
+       last_names,
+       case
+           when vip then interval '10 weeks'
+           when customer_since < DATE '2019-01-01' then interval '1 month'
+           when customer_since < now() - INTERVAL '2 years' then '4 weeks'
+           else '20 days' end
+from customer
+         join person on person = id;
 
 -- Ok, aber wer hat welches Buch ausgeliehen?
 
@@ -117,24 +128,25 @@ select first_names || ' ' || p.last_names as name, title
 from person p
          join lending l on l.lent_to = p.id
          join inventory i on i.id = l.inventory_item
-         join book b on b.isbn = i.book ;
+         join book b on b.isbn = i.book;
 
 
 -- Richtige antwort, aber unpraktisch insofern das wir Karl-Uwe mehrfach ausgeben.
 -- Wir haben nach einer Liste der Personen und ausgeliehen Buchtitel gefragt. Eigentlich
 -- wollen wir aber pro person eine Liste der ausgeliehenen Titel:
 
-select first_names || ' ' || last_names  as name, array_agg(title) as lent_books
- from person p
-     join lending l on l.lent_to = p.id
-     join inventory i on i.id = l.inventory_item
-     join book b on b.isbn = i.book
+select first_names || ' ' || last_names as name, array_agg(title) as lent_books
+from person p
+         join lending l on l.lent_to = p.id
+         join inventory i on i.id = l.inventory_item
+         join book b on b.isbn = i.book
 group by p.id;
 
 -- Aber was wenn wir wissen wollen, wer überfällige Bücher hat?
 
 -- zwei fragen: Was ist überfällig? Hängt vom Kunden ab.
-select person, now() - case
+select person,
+       now() - case
                    when vip then interval '10 weeks'
                    when customer_since < DATE '2019-01-01' then interval '1 month'
                    when customer_since < now() - INTERVAL '2 years' then '4 weeks'
@@ -143,17 +155,18 @@ from customer;
 
 -- und die Antwort in der anderen Abfrage verwenden
 
-select first_names || ' ' || last_names  as name, array_agg(title) as lent_books
+select first_names || ' ' || last_names as name, array_agg(title) as lent_books
 from person p
          join lending l on l.lent_to = p.id
          join inventory i on i.id = l.inventory_item
          join book b on b.isbn = i.book
-join (select person, now() - case
-                             when vip then interval '10 weeks'
-                             when customer_since < DATE '2019-01-01' then interval '1 month'
-                             when customer_since < now() - INTERVAL '2 years' then '4 weeks'
-                             else '20 days' end as due
-      from customer) due_dates on due_dates.person = p.id
+         join (select person,
+                      now() - case
+                                  when vip then interval '10 weeks'
+                                  when customer_since < DATE '2019-01-01' then interval '1 month'
+                                  when customer_since < now() - INTERVAL '2 years' then '4 weeks'
+                                  else '20 days' end as due
+               from customer) due_dates on due_dates.person = p.id
 where l.lent_on < due_dates.due
 group by p.id;
 

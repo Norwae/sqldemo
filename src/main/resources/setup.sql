@@ -1,5 +1,5 @@
-DROP SCHEMA if exists demo cascade;
-create schema demo;
+DROP SCHEMA if exists public cascade;
+create schema public;
 
 create table person
 (
