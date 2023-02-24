@@ -155,7 +155,7 @@ from customer;
 
 -- und die Antwort in der anderen Abfrage verwenden
 
-select first_names || ' ' || last_names as name, array_agg(title) as lent_books
+select first_names || ' ' || last_names as name, array_agg(title) as overdue
 from person p
          join lending l on l.lent_to = p.id
          join inventory i on i.id = l.inventory_item
