@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc51dbc-5ea5-476a-a773-64c3a2be355a" name="Changes" comment="Rule as a select">
+    <list default="true" id="9cc51dbc-5ea5-476a-a773-64c3a2be355a" name="Changes" comment="Some demo queries">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/demo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/demo.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/setup.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/setup.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,7 @@
       <workItem from="1676014479515" duration="4949000" />
       <workItem from="1676036853774" duration="4517000" />
       <workItem from="1676616169398" duration="652000" />
-      <workItem from="1677136327154" duration="4399000" />
+      <workItem from="1677136327154" duration="6440000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1676616212412</created>
@@ -77,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677221749641</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Some demo queries">
+      <created>1677231282618</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677231282618</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,6 +91,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
     <MESSAGE value="Rule as a select" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rule as a select" />
+    <MESSAGE value="Some demo queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some demo queries" />
   </component>
 </project>

@@ -64,6 +64,11 @@ from (values ('Albert Schweitzer', DATE '1875-01-14'),
 -- Verleihung: Bestandsnummer, kundennummer und ausleihdatum
 
 
+select first_names, last_names from person;
+
+-- wie viele bücher haben wir im bestand?
+select count(*) from inventory;
+
 
 -- Wie viele exemplare haben wir pro ISBN?
 SELECT book, COUNT(*)
@@ -152,3 +157,7 @@ join (select person, now() - case
 where l.lent_on < due_dates.due
 group by p.id;
 
+-- Manchmal kann es sinn machen Abfragen wie tabellen zu behandeln -> views
+-- oder komplizierte funktionsketten bekannt zu machen -> functions
+
+-- oder die sprache zu erweitern (funktions, extensions, user data types) - aber das führt zu weit
