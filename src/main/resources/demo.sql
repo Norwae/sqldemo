@@ -8,7 +8,7 @@
 SeLeCt 1;
 
 -- Wir können mit werten rechnen, und einfache Operationen ausführen
--- (Die "standardbibliothek" ist von DBMS zu DBMS etwas verschieden, aber meist
+-- (Die "standardbibliothek" ist von DBMS zu DBMS etwas verschieden, aber
 -- mit den basics was arithmetik, strings und ähnliches angeht ausgestattet)
 
 SELECT 1 + 3;
@@ -31,9 +31,9 @@ SELECT now() + INTERVAL '1Y3D6h7m';
 
 
 -- Wir können sogar ad-hoc tabellen definieren, die nicht "im Schema existieren"
--- Was vor allem bei komplexen abfragen manchmal hilfreich sein kann - beispielsweise wenn
--- gegebene Daten mit bereits gespeicherten Daten kombiniert werden müßen um ein update oder
--- insert auszuführen
+-- Was vor allem bei komplexen abfragen manchmal hilfreich sein kann -
+-- beispielsweise wenn gegebene Daten mit bereits gespeicherten Daten kombiniert
+-- werden müßen um ein update oder insert auszuführen
 
 SELECT name
 from (values ('Albert Schweitzer', DATE '1875-01-14'),
@@ -41,13 +41,12 @@ from (values ('Albert Schweitzer', DATE '1875-01-14'),
              ('Albert Hammond', DATE '1944-05-18'),
              ('Albert ''Al'' Gore', DATE '1977-01-03')) alberts(name, dob);
 
-
-SELECT name, age(dob)
-from (values ('Albert Schweitzer', DATE '1875-01-14'),
-             ('Albert Einstein', DATE '1879-03-14'),
-             ('Albert Hammond', DATE '1944-05-18'),
-             ('Albert ''Al'' Gore', DATE '1977-01-03')) alberts(name, dob);
-
+SELECT 1 FROM (SELECT name, age(dob)
+               from (values ('Albert Schweitzer', DATE '1875-01-14'),
+                            ('Albert Einstein', DATE '1879-03-14'),
+                            ('Albert Hammond', DATE '1944-05-18'),
+                            ('Albert ''Al'' Gore', DATE '1977-01-03')) alberts(name, dob)
+) unused;
 
 -- Abfragen gegen ein einfaches Model - was man aus einigen basics so herleiten kann
 
@@ -77,9 +76,10 @@ SELECT book, COUNT(*)
 FROM inventory
 group by book;
 
--- schon ganz gut, aber ISBNs sind unhandlich. Wie viele Exemplare haben wir ISBN, aber als titel angezeigt?
+-- schon ganz gut, aber ISBNs sind unhandlich. Wie viele Exemplare haben wir ISBN,
+-- aber als titel angezeigt?
 
-select title, count(*)
+select title, isbn, count(*)
 from inventory,
      book
 where inventory.book = book.isbn
@@ -89,7 +89,6 @@ group by isbn;
 select p.first_names, p.last_names, count(*)
 from authorship a
      join inventory i on a.book = i.book
-     join book b on a.book = b.isbn
      join person p on p.id = a.author
 group by p.id;
 
@@ -165,9 +164,9 @@ from person p
                                   when vip then interval '10 weeks'
                                   when customer_since < DATE '2019-01-01' then interval '1 month'
                                   when customer_since < now() - INTERVAL '2 years' then '4 weeks'
-                                  else '20 days' end as due
+                                  else '20 days' end as overdue_threshold
                from customer) due_dates on due_dates.person = p.id
-where l.lent_on < due_dates.due
+where l.lent_on < due_dates.overdue_threshold
 group by p.id;
 
 -- Manchmal kann es sinn machen Abfragen wie tabellen zu behandeln -> views

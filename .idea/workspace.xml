@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc51dbc-5ea5-476a-a773-64c3a2be355a" name="Changes" comment="Some demo queries">
+    <list default="true" id="9cc51dbc-5ea5-476a-a773-64c3a2be355a" name="Changes" comment="rename">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/QueryExample.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/demo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/demo.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +22,30 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sqldemo" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,6 +90,10 @@
       <workItem from="1676036853774" duration="4517000" />
       <workItem from="1676616169398" duration="652000" />
       <workItem from="1677136327154" duration="6440000" />
+      <workItem from="1677238477132" duration="3783000" />
+      <workItem from="1677484783228" duration="27000" />
+      <workItem from="1678959709010" duration="18000" />
+      <workItem from="1678976044314" duration="1176000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1676616212412</created>
@@ -82,7 +116,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677231282618</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Slight fixes">
+      <created>1677239784500</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677239784501</updated>
+    </task>
+    <task id="LOCAL-00005" summary="rename">
+      <created>1677247985878</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677247985878</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +140,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="Rule as a select" />
     <MESSAGE value="Some demo queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some demo queries" />
+    <MESSAGE value="Slight fixes" />
+    <MESSAGE value="rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename" />
   </component>
 </project>
