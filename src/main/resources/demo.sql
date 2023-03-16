@@ -1,5 +1,5 @@
---
--- Die Grundlagen
+-- Teil 1:
+-- Die absoluten Grundlagen
 --
 
 -- nicht mehr wirklich case sensitive
@@ -29,6 +29,10 @@ SELECT 'Mehrere', 'Werte';
 -- Und funktionen aufrufen
 SELECT now() + INTERVAL '1Y3D6h7m';
 
+-- Teil 2
+-- Tabellen machen spass
+--
+
 
 -- Wir können sogar ad-hoc tabellen definieren, die nicht "im Schema existieren"
 -- Was vor allem bei komplexen abfragen manchmal hilfreich sein kann -
@@ -41,12 +45,14 @@ from (values ('Albert Schweitzer', DATE '1875-01-14'),
              ('Albert Hammond', DATE '1944-05-18'),
              ('Albert ''Al'' Gore', DATE '1977-01-03')) alberts(name, dob);
 
-SELECT 1 FROM (SELECT name, age(dob)
+-- SELECT name from (
+SELECT name, age(dob)
                from (values ('Albert Schweitzer', DATE '1875-01-14'),
                             ('Albert Einstein', DATE '1879-03-14'),
                             ('Albert Hammond', DATE '1944-05-18'),
                             ('Albert ''Al'' Gore', DATE '1977-01-03')) alberts(name, dob)
-) unused;
+-- ) alberts
+;
 
 -- Abfragen gegen ein einfaches Model - was man aus einigen basics so herleiten kann
 
@@ -91,6 +97,9 @@ from authorship a
      join inventory i on a.book = i.book
      join person p on p.id = a.author
 group by p.id;
+
+-- Teil 3:
+-- Filtern und aufgrund von regeln neues Wissen schaffen
 
 -- Ausleihfristen müßen nicht explizit gespeichert werden, wir können solche Regeln auch in
 -- die Abfrage codieren.
